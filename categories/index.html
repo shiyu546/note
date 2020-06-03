@@ -1,0 +1,272 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>categories | shiyu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://github.com/shiyu546/note/categories/index.html">
+<meta property="og:site_name" content="shiyu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-03T04:02:10.249Z">
+<meta property="article:modified_time" content="2020-06-03T04:02:10.249Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="shiyu" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/note/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/note/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/note/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/note/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+      <header>
+        
+<div>
+		
+			<div id="imglogo">
+				<a href="/note/"><img src="/note/img/logo.png" alt="shiyu" title="shiyu"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/note/" title="shiyu">shiyu</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/note/">Home</a></li>
+					
+						<li><a href="/note/archives">Archives</a></li>
+					
+						<li><a href="/note/about">About</a></li>
+					
+						<li><a href="/note/tags">tags</a></li>
+					
+						<li><a href="/note/categories">categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:github.com/shiyu546/note">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+      </header>
+      <div id="container">
+          
+<div class="archive-title" >
+<h2 class="category-icon">Categories</h2>
+
+</div>
+<div id="main" class="archive-part">
+<div class="all-list-box"></div>
+</div>
+
+
+      </div>
+      <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 人有滢心，是生亵境 <br/>
+			人有亵心，是生怖境</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/xxx" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/note/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+      <script src="/note/js/jquery-2.0.3.min.js"></script>
+<script src="/note/js/jquery.imagesloaded.min.js"></script>
+<script src="/note/js/gallery.js"></script>
+<script src="/note/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var list    = $('.archive-title a'),
+      box     = $('.all-list-box'),
+      first   = $('.archive-title a:first-of-type');
+      box.load(first.attr('data-src').toString()+' #archive-page');
+      first.addClass('current');
+  list.each(function(){
+    $(this).click(function(){
+      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
+      box.load(listSrc);
+      list.removeClass('current');
+      $(this).addClass('current');
+     });  
+    });
+  }); 
+</script>
+
+
+<link rel="stylesheet" href="/note/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/note/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/note/img/scrollup.png"/></a>
+	</div>
+	<script src="/note/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+    </body>
+   </html>
