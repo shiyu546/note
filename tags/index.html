@@ -1,26 +1,23 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   
-    <title>shiyu</title>
+    <title>tags | shiyu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="John Doe">
     
 
     
-    <meta name="description" content="layout: tagstitle: tags">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shiyu">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="tags">
 <meta property="og:url" content="https://github.com/shiyu546/note/tags/index.html">
 <meta property="og:site_name" content="shiyu">
-<meta property="og:description" content="layout: tagstitle: tags">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-03T04:25:28.118Z">
-<meta property="article:modified_time" content="2020-06-03T04:25:28.118Z">
+<meta property="article:published_time" content="2020-06-03T04:45:18.000Z">
+<meta property="article:modified_time" content="2020-06-03T05:18:48.608Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -41,9 +38,9 @@
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-      <body>
-        <header>
-          
+    <body>
+      <header>
+        
 <div>
 		
 			<div id="imglogo">
@@ -64,8 +61,6 @@
 					
 						<li><a href="/note/archives">Archives</a></li>
 					
-						<li><a href="/note/about">About</a></li>
-					
 						<li><a href="/note/tags">tags</a></li>
 					
 						<li><a href="/note/categories">categories</a></li>
@@ -82,58 +77,22 @@
 				</ul>
 			</nav>			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/note/tags/index.html" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/note/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
-		
-  <p class="article-time">
-    <time datetime="2020-06-03T04:25:28.118Z" itemprop="datePublished"> Published 2020-06-03</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		<p>layout: tags<br>title: tags</p>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
+      </header>
+      <div id="container">
+          
+<div class="archive-title" >
+<h2 class="tag-icon">Tags</h2>
 
-
+</div>
+<div id="main" class="archive-part">
+<div class="all-list-box"></div>
 </div>
 
 
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="https://github.com/shiyu546/note/tags/index.html" data-title="shiyu" data-tsina="" class="share clearfix">
-	  </div>
-	
-	</div>
 
-
-</footer>
-
-   	       
-	</article>
-	
-	
-
-
-
-</div>  
-        </div>
-        <footer><div id="footer" >
+      </div>
+      <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -147,8 +106,6 @@
 	</section>
 	 
 	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/xxx" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
 		
@@ -172,7 +129,7 @@
 		</p>
 </div>
 </footer>
-        <script src="/note/js/jquery-2.0.3.min.js"></script>
+      <script src="/note/js/jquery-2.0.3.min.js"></script>
 <script src="/note/js/jquery.imagesloaded.min.js"></script>
 <script src="/note/js/gallery.js"></script>
 <script src="/note/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -223,63 +180,32 @@ $(document).ready(function(){
 </script>
 
 
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 $(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
+  var list    = $('.archive-title a'),
+      box     = $('.all-list-box'),
+      first   = $('.archive-title a:first-of-type');
+      box.load(first.attr('data-src').toString()+' #archive-page');
+      first.addClass('current');
+  list.each(function(){
+    $(this).click(function(){
+      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
+      box.load(listSrc);
+      list.removeClass('current');
+      $(this).addClass('current');
+     });  
+    });
+  }); 
 </script>
-
-
-
-
-
-
-
-
-
 
 
 <link rel="stylesheet" href="/note/fancybox/jquery.fancybox.css" media="screen" type="text/css">
@@ -309,16 +235,6 @@ $(document).ready(function(){
 
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 
 <!-- Analytics End -->
@@ -342,6 +258,5 @@ var _hmt = _hmt || [];
 
 <!-- Tiny_search End -->
 
-      </body>
-     </html>
-     
+    </body>
+   </html>
