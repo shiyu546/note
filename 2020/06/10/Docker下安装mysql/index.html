@@ -4,28 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>SpringMVC work flow | 烟光凝而暮山紫</title>
+    <title>Docker下安装mysql | 烟光凝而暮山紫</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="shiyu">
     
 
     
-    <meta name="description" content="1.SpringMVC运行流程1.1运行图示及解释   Step 1: First request will be received by DispatcherServlet.  Step 2: DispatcherServlet will take the help of HandlerMapping and get to know the Controller class name assoc">
+    <meta name="description" content="1.起因&amp;emsp;&amp;emsp;打算在raspberry上安装一个mysql，由于raspberry基于arm架构，普通的linux版mysql用不了，最后看到可以通过docker来安装mysql，固将安装过程的步骤以及碰到的问题记录下来。 2.安装过程2.1安装docker&amp;emsp;&amp;emsp;docker的安装步骤通过mysql官方文档链接的docker安装过程即可，主要命令如下： 1234">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC work flow">
-<meta property="og:url" content="https://github.com/shiyu546/note/2020/06/07/SpringMVC-work-flow/index.html">
+<meta property="og:title" content="Docker下安装mysql">
+<meta property="og:url" content="https://github.com/shiyu546/note/2020/06/10/Docker%E4%B8%8B%E5%AE%89%E8%A3%85mysql/index.html">
 <meta property="og:site_name" content="烟光凝而暮山紫">
-<meta property="og:description" content="1.SpringMVC运行流程1.1运行图示及解释   Step 1: First request will be received by DispatcherServlet.  Step 2: DispatcherServlet will take the help of HandlerMapping and get to know the Controller class name assoc">
+<meta property="og:description" content="1.起因&amp;emsp;&amp;emsp;打算在raspberry上安装一个mysql，由于raspberry基于arm架构，普通的linux版mysql用不了，最后看到可以通过docker来安装mysql，固将安装过程的步骤以及碰到的问题记录下来。 2.安装过程2.1安装docker&amp;emsp;&amp;emsp;docker的安装步骤通过mysql官方文档链接的docker安装过程即可，主要命令如下： 1234">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/note/2020/06/07/SpringMVC-work-flow/Spring_Flow.jpg">
-<meta property="article:published_time" content="2020-06-07T02:09:55.000Z">
-<meta property="article:modified_time" content="2020-06-07T02:51:19.297Z">
+<meta property="article:published_time" content="2020-06-10T14:04:18.000Z">
+<meta property="article:modified_time" content="2020-06-10T14:26:53.874Z">
 <meta property="article:author" content="shiyu">
-<meta property="article:tag" content="spring">
-<meta property="article:tag" content="springmvc">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/note/2020/06/07/SpringMVC-work-flow/Spring_Flow.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="烟光凝而暮山紫" type="application/atom+xml">
@@ -91,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/note/2020/06/07/SpringMVC-work-flow/" title="SpringMVC work flow" itemprop="url">SpringMVC work flow</a>
+      <a href="/note/2020/06/10/Docker下安装mysql/" title="Docker下安装mysql" itemprop="url">Docker下安装mysql</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/note/about" title="shiyu" target="_blank" itemprop="author">shiyu</a>
 		
   <p class="article-time">
-    <time datetime="2020-06-07T02:09:55.000Z" itemprop="datePublished"> Published 2020-06-07</time>
+    <time datetime="2020-06-10T14:04:18.000Z" itemprop="datePublished"> Published 2020-06-10</time>
     
   </p>
 </header>
@@ -107,33 +105,38 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SpringMVC运行流程"><span class="toc-number">1.</span> <span class="toc-text">1.SpringMVC运行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1运行图示及解释"><span class="toc-number">1.1.</span> <span class="toc-text">1.1运行图示及解释</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1.起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装过程"><span class="toc-number">2.</span> <span class="toc-text">2.安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1安装docker"><span class="toc-number">2.1.</span> <span class="toc-text">2.1安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2下载mysql镜像"><span class="toc-number">2.2.</span> <span class="toc-text">2.2下载mysql镜像</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="1-SpringMVC运行流程"><a href="#1-SpringMVC运行流程" class="headerlink" title="1.SpringMVC运行流程"></a>1.SpringMVC运行流程</h2><h3 id="1-1运行图示及解释"><a href="#1-1运行图示及解释" class="headerlink" title="1.1运行图示及解释"></a>1.1运行图示及解释</h3><img src="/note/2020/06/07/SpringMVC-work-flow/Spring_Flow.jpg" class="" title="spring运行流程">
+		<h2 id="1-起因"><a href="#1-起因" class="headerlink" title="1.起因"></a>1.起因</h2><p>&emsp;&emsp;打算在raspberry上安装一个mysql，由于raspberry基于arm架构，普通的linux版mysql用不了，最后看到可以通过docker来安装mysql，固将安装过程的步骤以及碰到的问题记录下来。</p>
+<h2 id="2-安装过程"><a href="#2-安装过程" class="headerlink" title="2.安装过程"></a>2.安装过程</h2><h3 id="2-1安装docker"><a href="#2-1安装docker" class="headerlink" title="2.1安装docker"></a>2.1安装docker</h3><p>&emsp;&emsp;docker的安装步骤通过mysql官方文档链接的docker安装过程即可，主要命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">apt-key fingerprint 0EBFCD88</span><br><span class="line">add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install docker-ce docker-ce-cli containerd.io</span><br><span class="line">apt-cache madison docker-ce</span><br><span class="line">apt-get install docker-ce=5:19.03.11~3-0~ubuntu-focal docker-ce-cli=5:19.03.11~3-0~ubuntu-focal containerd.io</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p>Step 1: First request will be received by DispatcherServlet.</p>
-</li>
-<li><p>Step 2: DispatcherServlet will take the help of HandlerMapping and get to know the Controller class name associated with the given request.</p>
-</li>
-<li><p>Step 3: So request transfer to the Controller, and then controller will process the request by executing appropriate methods and returns ModelAndView object (contains Model data and View name) back to the DispatcherServlet.</p>
-</li>
-<li><p>Step 4: Now DispatcherServlet send the model object to the ViewResolver to get the actual view page.</p>
-</li>
-<li><p>Step 5: Finally DispatcherServlet will pass the Model object to the View page to display the result.</p>
-</li>
-</ul>
-<p>&emsp;&emsp;这是springmvc运行的整个过程，可以看到springmvc运行以DispatcherServlet为核心，通过HandlerMapping寻找对应的控制器Controller，再由Controller处理具体的请求内容；再由ViewResolver获得具体的View Page，最后通过View Page以及model渲染整个页面。每个步骤都有其特定的功能，且通过DispatcherServlet串联起来，生成响应。</p>
-<p>&emsp;&emsp;RESTful web service和传统的mvc的区别主要在于http响应体的创建。以下内容摘自spring guide “Building a RESTful Web Service”：</p>
-<blockquote>
-<p>A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a Greeting object. The object data will be written directly to the HTTP response as JSON.</p>
-</blockquote>
-<p>&emsp;&emsp;也就是说REST在Controller中返回的不是ModelandView，而是对象Object，那么REST中自然就不需要后面的视图渲染过程了，且对象转JSON是由spring自己完成的。</p>
-<blockquote>
-<p>Thanks to Spring’s HTTP message converter support, you need not do this conversion manually. Because Jackson 2 is on the classpath, Spring’s MappingJackson2HttpMessageConverter is automatically chosen to convert the Greeting instance to JSON.</p>
-</blockquote>
+<p>&emsp;&emsp;安装过程按部就班就好，不过由于国内的网速，部分命令会比较慢，然后最后一个测试docker是否安装成功的docker run hello-world会因为服务器的原因报错。</p>
+<h3 id="2-2下载mysql镜像"><a href="#2-2下载mysql镜像" class="headerlink" title="2.2下载mysql镜像"></a>2.2下载mysql镜像</h3><p>&emsp;&emsp;由于国外服务器太慢，需要添加docker国内镜像来下载，命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d1d9aef0.m.daocloud.io</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;然后重启docker：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2.</span><br><span class="line">systemctl restart docker.service</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;然后拉mysql镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3.</span><br><span class="line">docker pull mysql/mysql-server:latest</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;最后启动mysql，命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4.</span><br><span class="line">docker run --name=mysql1 -d mysql/mysql-server:latest</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;并可以通过如下命令在docker中连接mysql:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5.</span><br><span class="line">docker exec -it mysql1 mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;以上步骤都很顺利，但当需要通过远程客户端连接mysql时，问题就出现了，尝试多种方法后都无法连接到该mysql。后来通过搜索发现原因时docker没有把mysql的端口暴露出来，于是更改mysql的启动命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6.</span><br><span class="line">docker run -p 33060:3306 --name mysql2 -e MYSQL_ROOT_PASSWORD=123456 -d mysql/mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;相比于4处，这里多了一个-p 33060:3306,前者为docker暴露在操作系统中的端口，后者为mysql在docker中的端口。通过这一步骤，终于可以连上mysql了。剩下的就是mysql8.0验证方式改一下。</p>
+<p>&emsp;&emsp;但仍然还遗留了一个问题：mysql本机可以通过ip连接，但无法通过localhsot连接mysql，报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can&#39;t connect to local MySQL server through socket &#39;&#x2F;var&#x2F;run&#x2F;mysqld&#x2F;mysqld.sock&#39;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;这个问题暂时没找到解决方法。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -141,13 +144,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/note/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/note/categories/JAVA/%E6%A1%86%E6%9E%B6/">框架</a>►<a class="article-category-link" href="/note/categories/JAVA/%E6%A1%86%E6%9E%B6/SpringMVC/">SpringMVC</a>
+  <a class="article-category-link" href="/note/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/note/tags/spring/">spring</a><a href="/note/tags/springmvc/">springmvc</a>
+  <span></span> <a href="/note/tags/mysql/">mysql</a><a href="/note/tags/docker/">docker</a>
   </div>
 
 </div>
@@ -156,7 +159,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://github.com/shiyu546/note/2020/06/07/SpringMVC-work-flow/" data-title="SpringMVC work flow | 烟光凝而暮山紫" data-tsina="" class="share clearfix">
+	  <div data-url="https://github.com/shiyu546/note/2020/06/10/Docker%E4%B8%8B%E5%AE%89%E8%A3%85mysql/" data-title="Docker下安装mysql | 烟光凝而暮山紫" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -169,19 +172,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/note/2020/06/10/Docker下安装mysql/" title="Docker下安装mysql">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Docker下安装mysql</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/note/2020/06/01/mybatis浅析/"  title="mybatis浅析">
+<a href="/note/2020/06/07/SpringMVC-work-flow/"  title="SpringMVC work flow">
  <strong>下一篇：</strong><br/> 
- <span>mybatis浅析
+ <span>SpringMVC work flow
 </span>
 </a>
 </div>
@@ -198,7 +193,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SpringMVC运行流程"><span class="toc-number">1.</span> <span class="toc-text">1.SpringMVC运行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1运行图示及解释"><span class="toc-number">1.1.</span> <span class="toc-text">1.1运行图示及解释</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1.起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装过程"><span class="toc-number">2.</span> <span class="toc-text">2.安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1安装docker"><span class="toc-number">2.1.</span> <span class="toc-text">2.1安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2下载mysql镜像"><span class="toc-number">2.2.</span> <span class="toc-text">2.2下载mysql镜像</span></a></li></ol></li></ol>
  
   </div>
 
